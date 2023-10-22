@@ -1,0 +1,14 @@
+.question-btn{
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    transition: .2s;
+}
+.question-btn:hover{
+    transform: scale(1.05);
+}
+.settings-btn{
+    border: none;
+}
