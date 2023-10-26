@@ -13,6 +13,7 @@
   .post-info {
     display: flex;
     align-items: center;
+    
   }
   
   .post-info > h4 {

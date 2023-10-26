@@ -1,15 +1,18 @@
-// import './App.css'
+import './App.css'
+import { Route, Routes } from 'react-router-dom'
 import Home from './Components/Home'
-import Navbar from './Components/Navbar'
+import Login from './Components/Login'
+import Register from './Components/Register'
 
 function App() {
 
   return (
     <>
-    <div className="sticky-top">
-      <Navbar />
-      </div>
-    <Home/>
+   <Routes>
+    <Route path='/' element={<Home/>}/>
+    <Route path='/login' element={<Login/>}/>
+    <Route path='/register' element={<Register/>}/>
+   </Routes>
     </>
   )
 }

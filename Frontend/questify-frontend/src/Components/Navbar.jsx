@@ -20,23 +20,27 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import TextField from "@mui/material/TextField";
 import "./css/Navbar.css";
 import Logo from "./assets/Questify.png";
+import { useNavigate } from "react-router-dom";
 
-const pages = [
-  <HomeIcon />,
-  <ListAltIcon />,
-  <EditIcon />,
-  <PeopleIcon />,
-  <NotificationsIcon />,
-];
 
-const settings = [
-  <button className="settings-btn">Login</button>,
-  <button className="settings-btn">Signup</button>,
-];
+
+
 
 function Navbar() {
+  const navigate=useNavigate()
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const settings = [
+    <button className="settings-btn" onClick={()=>navigate('/login')}>Login</button>,
+    <button className="settings-btn" onClick={()=>navigate('/register')}>Signup</button>,
+  ];
+  const pages = [
+    <HomeIcon />,
+    <ListAltIcon />,
+    <EditIcon />,
+    <PeopleIcon />,
+    <NotificationsIcon />,
+  ];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);

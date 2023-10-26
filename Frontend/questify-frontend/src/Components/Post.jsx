@@ -12,12 +12,14 @@ function Post() {
     <div className="post">
       <div className="post-info">
         <Avatar />
-        <h4>User Name</h4>
+        <h4>User Name</h4><br />
         <small>Timestamp</small>
       </div>
       <div className="post-body">
+        <div className="post-question">
         <p>This is test question</p>
         <button className="post-answerbtn">Answer</button>
+        </div>
       </div>
       <div className="post-footer">
         <div className="post-footerAction">
@@ -26,9 +28,9 @@ function Post() {
         </div>
         <ChatBubbleOutlineIcon />
         <ShareIcon />
-      </div>
       <div className="post-footer-right">
         <MoreHorizIcon />
+      </div>
       </div>
       <p
         style={{
@@ -70,10 +72,12 @@ function Post() {
             <div style={{
                 margin:"0px 10px"
             }} className="post-info">
-              <p>User Name</p>
+              <p>User Name</p><br />
               <span>Timestamp</span>
             </div>
+            
           </div>
+          
           <div className="post-answer">This is test Answer</div>
         </div>
       </div>
