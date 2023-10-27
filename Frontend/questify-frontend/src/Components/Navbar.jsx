@@ -13,26 +13,33 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import HomeIcon from "@mui/icons-material/Home";
+import CloseIcon from "@mui/icons-material/Close";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import EditIcon from "@mui/icons-material/Edit";
 import PeopleIcon from "@mui/icons-material/People";
+import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import TextField from "@mui/material/TextField";
 import "./css/Navbar.css";
 import Logo from "./assets/Questify.png";
 import { useNavigate } from "react-router-dom";
-
-
-
-
+import { useState } from "react";
+import { Modal } from "react-responsive-modal";
+import "react-responsive-modal/styles.css";
+import { Input } from "@mui/material";
 
 function Navbar() {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const settings = [
-    <button className="settings-btn" onClick={()=>navigate('/login')}>Login</button>,
-    <button className="settings-btn" onClick={()=>navigate('/register')}>Signup</button>,
+    <button className="settings-btn" onClick={() => navigate("/login")}>
+      Login
+    </button>,
+    <button className="settings-btn" onClick={() => navigate("/register")}>
+      Signup
+    </button>,
   ];
   const pages = [
     <HomeIcon />,
@@ -41,6 +48,10 @@ function Navbar() {
     <PeopleIcon />,
     <NotificationsIcon />,
   ];
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const[inputUrl, setInputUrl] = useState("");
+  const Close = <CloseIcon />;
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -145,7 +156,71 @@ function Navbar() {
             </Menu>
           </Box>
           &nbsp;&nbsp;&nbsp;
-          <button className="question-btn">Add Question</button>
+          <button onClick={() => setIsModalOpen(true)} className="question-btn">
+            Add Question
+          </button>
+          <Modal
+            open={isModalOpen}
+            closeIcon={Close}
+            onClose={() => setIsModalOpen(false)}
+            closeOnEsc
+            center
+            closeOnOverlayClick={false}
+            styles={{
+              overlay: {
+                height: "auto",
+              },
+            }}
+            classNames={{
+              modal: "custom-modal",
+            }}
+          >
+            <div className="modal-title">
+              <h5>Add question</h5>
+            </div>
+            <div className="modal-info">
+              <Avatar />
+              <div className="modal-scope">
+                <PeopleOutlineIcon />
+                <p>public</p>
+                <ExpandMoreIcon />
+              </div>
+            </div>
+            <div className="modal-field">
+              <Input
+                type="text"
+                placeholder="Start your question with 'Why','what','How',etc."
+              />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <input
+                  type="text"
+                  placeholder="optional:Include a link that gives context"
+                  value={inputUrl}
+                  onChange={(e) => setInputUrl(e.target.value)}
+                  style={{
+                    margin: "5px 0",
+                    border: "1px solid lightgray",
+                    padding: "10px",
+                    outline: "2px solid #000",
+                  }}
+                />
+                {inputUrl !== "" && <img style={{height:"40vh",objectFit:"contain"}} src={inputUrl} alt="image" />}
+              </div>
+            </div>
+            <div className="modal-buttons">
+              <button className="cancel" onClick={() => setIsModalOpen(false)}>
+                Cancel
+              </button>
+              <button type="submit" className="add">
+                Add Question
+              </button>
+            </div>
+          </Modal>
         </Toolbar>
       </Container>
     </AppBar>

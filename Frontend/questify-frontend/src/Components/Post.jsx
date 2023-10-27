@@ -6,19 +6,67 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import ShareIcon from "@mui/icons-material/Share";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { Modal } from "react-responsive-modal";
+import "react-responsive-modal/styles.css";
+import CloseIcon from "@mui/icons-material/Close";
+import { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 function Post() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const Close = <CloseIcon />;
   return (
     <div className="post">
       <div className="post-info">
         <Avatar />
-        <h4>User Name</h4><br />
-        <small>Timestamp</small>
+        <h4>User Name</h4>
+        <br />
+        {/* <small>Timestamp</small> */}
       </div>
       <div className="post-body">
         <div className="post-question">
-        <p>This is test question</p>
-        <button className="post-answerbtn">Answer</button>
+          <p>This is test question</p>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="post-answerbtn"
+          >
+            Answer
+          </button>
+          <Modal
+            open={isModalOpen}
+            closeIcon={Close}
+            onClose={() => setIsModalOpen(false)}
+            closeOnEsc
+            center
+            closeOnOverlayClick={false}
+            styles={{
+              overlay: {
+                height: "auto",
+              },
+            }}
+            classNames={{
+              modal: "custom-modal",
+            }}
+          >
+            <div className="modal-question">
+              <h1>this is test qustion?</h1>
+              <p>
+                asked by {" "}<span className="name">username</span>on <span className="name" >timestamp</span>{" "}
+              </p>
+            </div>
+            <div className="modal-answer">
+              <ReactQuill placeholder="Enter your answer" />
+            </div>
+            <div className="modal-button">
+              <button className="cancel" onClick={() => setIsModalOpen(false)}>
+                Cancel
+              </button>
+              <button type="submit" className="add">
+                Add Question
+              </button>
+            </div>
+          </Modal>
         </div>
       </div>
       <div className="post-footer">
@@ -28,9 +76,9 @@ function Post() {
         </div>
         <ChatBubbleOutlineIcon />
         <ShareIcon />
-      <div className="post-footer-right">
-        <MoreHorizIcon />
-      </div>
+        <div className="post-footer-right">
+          <MoreHorizIcon />
+        </div>
       </div>
       <p
         style={{
@@ -60,24 +108,30 @@ function Post() {
           }}
           className="post-answer-container"
         >
-          <div  style={{
-            display: "flex",
-            alignItems:"center",
-            marginBottom:"10px",
-            fontSize:"12px",
-            fontWeight:600,
-            color:"#888"
-          }} className="post-answered">
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "10px",
+              fontSize: "12px",
+              fontWeight: 600,
+              color: "#888",
+            }}
+            className="post-answered"
+          >
             <Avatar />
-            <div style={{
-                margin:"0px 10px"
-            }} className="post-info">
-              <p>User Name</p><br />
-              <span>Timestamp</span>
+            <div
+              style={{
+                margin: "0px 10px",
+              }}
+              className="post-info"
+            >
+              <p>User Name</p>
+              <br />
+              {/* <span>Timestamp</span> */}
             </div>
-            
           </div>
-          
+
           <div className="post-answer">This is test Answer</div>
         </div>
       </div>

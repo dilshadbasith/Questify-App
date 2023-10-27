@@ -25,8 +25,8 @@ function Login() {
         <form action="" onSubmit={Login}>
     <div className='cover'>
        <div> <h1 className='loginh1'>Login</h1></div>
-       <div> <input className='textbox' type="text" id='username' placeholder='username' /><br /><br /><br />
-        <input className='textbox' type="text" id='password' placeholder='password'/></div>
+       <div> <input className='textbox' type="text" id='username' placeholder='username' required/><br /><br /><br />
+        <input className='textbox' type="text" id='password' placeholder='password' required/></div>
         <div><button className='login-btn'>Login</button></div>
     <p>Don't have an account?<a href="" onClick={()=>navigate('/register')}>SignUp</a></p>
     </div>
