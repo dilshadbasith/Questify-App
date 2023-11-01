@@ -28,6 +28,7 @@ import { useState } from "react";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import { Input } from "@mui/material";
+import axios from "axios";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -50,8 +51,35 @@ function Navbar() {
   ];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const[inputUrl, setInputUrl] = useState("");
+  const [inputUrl, setInputUrl] = useState("");
+  const [question, setQuestion] = useState("");
   const Close = <CloseIcon />;
+
+  const handleSubmit = async () => {
+    if (question !== "") {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const body = {
+        questionName: question,
+        questionUrl: inputUrl,
+      };
+      await axios
+        .post("http://localhost:3000/api/questions", body, config)
+        .then((res) => {
+          console.log(res.data);
+          alert(res.data.message)
+          window.location.href = "/"
+        })
+        .catch((e) => {
+          console.log(e);
+          alert("Error in adding question")
+        });
+    }
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -188,6 +216,8 @@ function Navbar() {
             </div>
             <div className="modal-field">
               <Input
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
                 type="text"
                 placeholder="Start your question with 'Why','what','How',etc."
               />
@@ -209,14 +239,20 @@ function Navbar() {
                     outline: "2px solid #000",
                   }}
                 />
-                {inputUrl !== "" && <img style={{height:"40vh",objectFit:"contain"}} src={inputUrl} alt="image" />}
+                {inputUrl !== "" && (
+                  <img
+                    style={{ height: "40vh", objectFit: "contain" }}
+                    src={inputUrl}
+                    alt="image"
+                  />
+                )}
               </div>
             </div>
             <div className="modal-buttons">
               <button className="cancel" onClick={() => setIsModalOpen(false)}>
                 Cancel
               </button>
-              <button type="submit" className="add">
+              <button onClick={handleSubmit} type="submit" className="add">
                 Add Question
               </button>
             </div>

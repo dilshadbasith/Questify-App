@@ -13,7 +13,17 @@ import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-function Post() {
+import ReactTimeAgo from "react-time-ago";
+
+function LastSeen({ date }) {
+  return (
+    <div>
+      <ReactTimeAgo date={date} locale="en-US" timeStyle="round" />
+    </div>
+  );
+}
+
+function Post({ post }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const Close = <CloseIcon />;
   return (
@@ -22,11 +32,13 @@ function Post() {
         <Avatar />
         <h4>User Name</h4>
         <br />
-        {/* <small>Timestamp</small> */}
+        <small>
+          <LastSeen date={post?.createdAt} />
+        </small>
       </div>
       <div className="post-body">
         <div className="post-question">
-          <p>This is test question</p>
+          <p>{post?.questionName}</p>
           <button
             onClick={() => setIsModalOpen(true)}
             className="post-answerbtn"
@@ -50,9 +62,10 @@ function Post() {
             }}
           >
             <div className="modal-question">
-              <h1>this is test qustion?</h1>
+              <h1>{post?.questionName}</h1>
               <p>
-                asked by {" "}<span className="name">username</span>on <span className="name" >timestamp</span>{" "}
+                asked by <span className="name">username</span>on{" "}
+                <span className="name">{new Date(post?.createdAt).toLocaleString()}</span>{" "}
               </p>
             </div>
             <div className="modal-answer">
@@ -68,6 +81,9 @@ function Post() {
             </div>
           </Modal>
         </div>
+        {
+          <img src={post.questionUrl} alt="image" />
+        }
       </div>
       <div className="post-footer">
         <div className="post-footerAction">
@@ -88,7 +104,8 @@ function Post() {
           margin: "10px 0",
         }}
       >
-        1 Answer
+        {post.allAnswers.length < 2 ? `${post.allAnswers.length} answer` : `${post.allAnswers.length} answers`}
+
       </p>
       <div
         style={{
