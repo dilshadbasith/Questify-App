@@ -25,7 +25,13 @@ function LastSeen({ date }) {
 
 function Post({ post }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [answer,setAnswer]=useState("")
   const Close = <CloseIcon />;
+
+  const handleQuill = (value) =>{
+    setAnswer(answer)
+  }
+  console.log(answer)
   return (
     <div className="post">
       <div className="post-info">
@@ -69,20 +75,20 @@ function Post({ post }) {
               </p>
             </div>
             <div className="modal-answer">
-              <ReactQuill placeholder="Enter your answer" />
+              <ReactQuill value={answer} onChange={handleQuill} placeholder="Enter your answer" />
             </div>
             <div className="modal-button">
               <button className="cancel" onClick={() => setIsModalOpen(false)}>
                 Cancel
               </button>
               <button type="submit" className="add">
-                Add Question
+                Add Answer
               </button>
             </div>
           </Modal>
         </div>
         {
-          <img src={post.questionUrl} alt="image" />
+          <img src={post.questionUrl} alt="no image" />
         }
       </div>
       <div className="post-footer">
