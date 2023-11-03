@@ -29,6 +29,8 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import { Input } from "@mui/material";
 import axios from "axios";
+import { myContext } from "./Context";
+import { useContext } from "react";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -53,6 +55,7 @@ function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [inputUrl, setInputUrl] = useState("");
   const [question, setQuestion] = useState("");
+  const { search, setSearch } = useContext(myContext);
   const Close = <CloseIcon />;
 
   const handleSubmit = async () => {
@@ -71,12 +74,12 @@ function Navbar() {
         .post("http://localhost:3000/api/questions", body, config)
         .then((res) => {
           console.log(res.data);
-          alert(res.data.message)
-          window.location.href = "/"
+          alert(res.data.message);
+          window.location.href = "/";
         })
         .catch((e) => {
           console.log(e);
-          alert("Error in adding question")
+          alert("Error in adding question");
         });
     }
   };
@@ -152,7 +155,13 @@ function Navbar() {
               </Button>
             ))}
           </Box>
-          <TextField id="outlined-basic" label="Search" variant="outlined" />
+          <TextField
+            id="outlined-basic"
+            label="Search"
+            type="search"
+            variant="outlined"
+            onChange={(e) => setSearch(e.target.value)}
+          />
           &nbsp;&nbsp;&nbsp;
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
