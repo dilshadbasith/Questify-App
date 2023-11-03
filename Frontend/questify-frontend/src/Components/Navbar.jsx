@@ -157,7 +157,7 @@ function Navbar() {
           </Box>
           <TextField
             id="outlined-basic"
-            label="Search"
+            label="Search Questions"
             type="search"
             variant="outlined"
             onChange={(e) => setSearch(e.target.value)}

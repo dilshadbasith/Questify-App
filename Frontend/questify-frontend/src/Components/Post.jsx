@@ -14,6 +14,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 import ReactTimeAgo from "react-time-ago";
+import axios from "axios";
 
 function LastSeen({ date }) {
   return (
@@ -28,10 +29,32 @@ function Post({ post }) {
   const [answer,setAnswer]=useState("")
   const Close = <CloseIcon />;
 
-  const handleQuill = (value) =>{
-    setAnswer(answer)
+
+  const handleSubmit=async()=>{
+    if(post?._id&&answer!==""){
+      const config={
+        headers:{
+          "Content-Type":"application/json"
+        }
+      }
+      const body={
+        answer:answer,
+        questionId:post?._id
+      }
+      await axios.post('http://localhost:3000/api/answers',body,config).then((res)=>{
+        console.log(res.data)
+        alert("Answer added successfully")
+        setIsModalOpen(false)
+        window.location.href = '/'
+      }).catch((e)=>{
+        console.log(e)
+      })
+    }
   }
-  console.log(answer)
+
+  const handleQuill = (value) =>{
+    setAnswer(value)
+  }
   return (
     <div className="post">
       <div className="post-info">
@@ -81,14 +104,14 @@ function Post({ post }) {
               <button className="cancel" onClick={() => setIsModalOpen(false)}>
                 Cancel
               </button>
-              <button type="submit" className="add">
+              <button onClick={handleSubmit} type="submit" className="add">
                 Add Answer
               </button>
             </div>
           </Modal>
         </div>
         {
-          <img src={post.questionUrl} alt="no image" />
+          post.questionUrl?<img src={post.questionUrl} alt="no image" />:""
         }
       </div>
       <div className="post-footer">
