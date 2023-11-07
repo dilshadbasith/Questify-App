@@ -215,3 +215,13 @@
     width: 50%;
     height: 75%;
   }
+  .timespan{
+    position: relative;
+    top: 8px;
+    right: 60px;
+  }
+  .timestamp{
+    position: relative;
+    bottom: 3px;
+    font-size: 12px
+  }

@@ -12,7 +12,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-
+import ReactHtmlParser from 'html-react-parser'
 import ReactTimeAgo from "react-time-ago";
 import axios from "axios";
 
@@ -61,7 +61,7 @@ function Post({ post }) {
         <Avatar />
         <h4>User Name</h4>
         <br />
-        <small>
+        <small className="timestamp">
           <LastSeen date={post?.createdAt} />
         </small>
       </div>
@@ -144,42 +144,48 @@ function Post({ post }) {
         }}
         className="post-answer"
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "100%",
-            padding: "10px 5px",
-            borderTop: "1px solid lightgray",
-          }}
-          className="post-answer-container"
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginBottom: "10px",
-              fontSize: "12px",
-              fontWeight: 600,
-              color: "#888",
-            }}
-            className="post-answered"
-          >
-            <Avatar />
-            <div
-              style={{
-                margin: "0px 10px",
-              }}
-              className="post-info"
-            >
-              <p>User Name</p>
-              <br />
-              {/* <span>Timestamp</span> */}
-            </div>
-          </div>
-
-          <div className="post-answer">This is test Answer</div>
-        </div>
+          {
+            post?.allAnswers?.map((a)=>(
+              <>              
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                  padding: "10px 5px",
+                  borderTop: "1px solid lightgray",
+                }}
+                className="post-answer-container"
+              >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginBottom: "10px",
+                  fontSize: "12px",
+                  fontWeight: 600,
+                  color: "#888",
+                }}
+                className="post-answered"
+              >
+                <Avatar />
+                <div
+                  style={{
+                    margin: "0px 10px",
+                  }}
+                  className="post-info"
+                >
+                  <p>User Name</p>
+                  <span className="timespan"><LastSeen date={a?.createdAt}/></span>
+                </div>
+              </div>
+    
+              <div className="post-answer">{ReactHtmlParser(a.answer)}</div>
+              </div>
+              </>
+            ))
+          }
+        
       </div>
     </div>
   );
