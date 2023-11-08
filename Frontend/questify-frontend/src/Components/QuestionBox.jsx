@@ -1,15 +1,20 @@
 import { Avatar } from '@mui/material'
 import React from 'react'
 import './css/QuestionBox.css'
+import { useSelector } from 'react-redux'
+import { selectUser } from '../feature/userSlice'
+
 
 function QuestionBox()  {
+  const user = useSelector(selectUser)
   return (
     <div className='QuestionBox'>
         <div className='QuestionBox-info'>
-            <Avatar/>
+            <Avatar src={user?.photo}/>
         </div>
         <div className='QuestionBox-question'>
-            <h5>What is your question?</h5>
+          <h5>Hello, {user?.userName}</h5>
+            
         </div>
     </div>
   )

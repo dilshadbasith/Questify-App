@@ -6,9 +6,12 @@ import Logo from './assets/Questify.png'
 import Google from './assets/google.png'
 import {signInWithPopup} from 'firebase/auth'
 import { auth, provider } from '../firebase'
+import { useCookies } from 'react-cookie';
+
 
 function Login() {
     const navigate=useNavigate()
+    const [_,setcookie]=useCookies(["cookie"])
     const Login = async (e) =>{
         e.preventDefault()
         const username = e.target.username.value
@@ -19,7 +22,8 @@ function Login() {
         })
         
         if(logger.data.status=="success"){
-            navigate('/')
+            setcookie("cookie",logger.data.data)
+            navigate('/home')
         }else{
             alert("not a user")
         }
@@ -28,6 +32,8 @@ function Login() {
     const handleSubmit= async() =>{
         await signInWithPopup(auth,provider)
         .then((result)=>{
+            setcookie("cookie","auth")
+            navigate('/home')
             console.log(result)
         }).catch((error)=>{
             console.log(error)

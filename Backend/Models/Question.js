@@ -9,7 +9,8 @@ const QuestionSchema=new mongoose.Schema({
     answers:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Answers"
-    }
+    },
+    user:Object,
 })
 
 module.exports=mongoose.model("Questions",QuestionSchema)

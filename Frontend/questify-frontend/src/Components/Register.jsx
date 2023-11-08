@@ -31,7 +31,7 @@ function Register() {
        <input className='textbox' type="text" id='username' placeholder='username' required /><br /><br />
         <input className='textbox' type="text" id='password' placeholder='password'required/></div>
         <div><button className='login-btn' type='submit'>SignUp</button></div>
-    <p>Already have an account?<a href="" onClick={()=>navigate('/login')}>Login</a></p>
+    <p>Already have an account?<a href="" onClick={()=>navigate('/')}>Login</a></p>
     </div>
     </form>
     </div>

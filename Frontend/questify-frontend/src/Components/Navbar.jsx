@@ -33,23 +33,33 @@ import { myContext } from "./Context";
 import { useContext } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
-import { logout } from "../feature/userSlice";
-import { useDispatch } from "react-redux";
+import { logout, selectUser } from "../feature/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useCookies } from 'react-cookie';
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const dispatch=useDispatch()
+  const user = useSelector(selectUser)
+  const navigate=useNavigate()
+  const [cookies, removeCookie] = useCookies(['cookie']);
+  console.log(cookies)
 
   const handleLogout=()=>{
     if(window.confirm("Are you sure to logout?")){
       signOut(auth)
       .then(()=>{
+        removeCookie("cookie")
+        navigate('/')
         dispatch(logout())
         console.log("Logged out")
       }).catch(()=>{
         console.log("Error in logout")
+
       })
+      removeCookie("cookie")
+        navigate('/')
     }
   }
   const settings = [
@@ -69,7 +79,7 @@ function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [inputUrl, setInputUrl] = useState("");
   const [question, setQuestion] = useState("");
-  const { search, setSearch } = useContext(myContext);
+  const {  setSearch } = useContext(myContext);
   const Close = <CloseIcon />;
 
   const handleSubmit = async () => {
@@ -83,13 +93,14 @@ function Navbar() {
       const body = {
         questionName: question,
         questionUrl: inputUrl,
+        user:user,
       };
       await axios
         .post("http://localhost:3000/api/questions", body, config)
         .then((res) => {
           console.log(res.data);
           alert(res.data.message);
-          window.location.href = "/";
+          window.location.href = "/home";
         })
         .catch((e) => {
           console.log(e);
@@ -180,7 +191,7 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar />
+                <Avatar src={user?.photo}/>
               </IconButton>
             </Tooltip>
             <Menu
@@ -230,7 +241,7 @@ function Navbar() {
               <h5>Add question</h5>
             </div>
             <div className="modal-info">
-              <Avatar />
+              <Avatar src={user?.photo}/>
               <div className="modal-scope">
                 <PeopleOutlineIcon />
                 <p>public</p>

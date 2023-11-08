@@ -9,11 +9,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login, selectUser } from './feature/userSlice';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
+import { useCookies } from 'react-cookie';
 
 function App() {
   const [search,setSearch]=useState('')
-  const user = useSelector(selectUser)
-  const dispatch=useDispatch()
+  const dispatch=useDispatch() 
+  const [cookie]=useCookies(["cookie"])
 
   useEffect(()=>{
     onAuthStateChanged(auth,(authUser)=>{
@@ -34,11 +35,12 @@ function App() {
   return (
     <>
     <myContext.Provider value={{search,setSearch}}>
-    {
+    {/* {
       user? (<Home/>) : (<Login/>)
-    }
+    } */}
    <Routes>
-    {/* <Route path='/login' element={<Login/>}/> */}
+    <Route path='/home' element={cookie.cookie?<Home/>:<Login/>}/>
+    <Route path='/' element={<Login/>}/>
     <Route path='/register' element={<Register/>}/>
    </Routes>
    </myContext.Provider>

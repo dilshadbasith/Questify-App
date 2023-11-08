@@ -15,6 +15,8 @@ import "react-quill/dist/quill.snow.css";
 import ReactHtmlParser from 'html-react-parser'
 import ReactTimeAgo from "react-time-ago";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { selectUser } from "../feature/userSlice";
 
 function LastSeen({ date }) {
   return (
@@ -28,6 +30,7 @@ function Post({ post }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [answer,setAnswer]=useState("")
   const Close = <CloseIcon />;
+  const user=useSelector(selectUser)
 
 
   const handleSubmit=async()=>{
@@ -39,13 +42,14 @@ function Post({ post }) {
       }
       const body={
         answer:answer,
-        questionId:post?._id
+        questionId:post?._id,
+        user:user
       }
       await axios.post('http://localhost:3000/api/answers',body,config).then((res)=>{
         console.log(res.data)
         alert("Answer added successfully")
         setIsModalOpen(false)
-        window.location.href = '/'
+        window.location.href = '/home'
       }).catch((e)=>{
         console.log(e)
       })
@@ -58,8 +62,8 @@ function Post({ post }) {
   return (
     <div className="post">
       <div className="post-info">
-        <Avatar />
-        <h4>User Name</h4>
+        <Avatar src={post?.user?.photo}/>
+        <h4>{post?.user?.userName}</h4>
         <br />
         <small className="timestamp">
           <LastSeen date={post?.createdAt} />
@@ -93,7 +97,7 @@ function Post({ post }) {
             <div className="modal-question">
               <h1>{post?.questionName}</h1>
               <p>
-                asked by <span className="name">username</span>on{" "}
+                asked by <span className="name">{post?.user?.userName} </span>on{" "}
                 <span className="name">{new Date(post?.createdAt).toLocaleString()}</span>{" "}
               </p>
             </div>
@@ -168,14 +172,14 @@ function Post({ post }) {
                 }}
                 className="post-answered"
               >
-                <Avatar />
+                <Avatar src={a?.user?.photo}/>
                 <div
                   style={{
                     margin: "0px 10px",
                   }}
                   className="post-info"
                 >
-                  <p>User Name</p>
+                  <p>{a?.user?.userName}</p>
                   <span className="timespan"><LastSeen date={a?.createdAt}/></span>
                 </div>
               </div>
