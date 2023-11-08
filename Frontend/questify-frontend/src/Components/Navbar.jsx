@@ -31,18 +31,32 @@ import { Input } from "@mui/material";
 import axios from "axios";
 import { myContext } from "./Context";
 import { useContext } from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import { logout } from "../feature/userSlice";
+import { useDispatch } from "react-redux";
 
 function Navbar() {
-  const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const dispatch=useDispatch()
+
+  const handleLogout=()=>{
+    if(window.confirm("Are you sure to logout?")){
+      signOut(auth)
+      .then(()=>{
+        dispatch(logout())
+        console.log("Logged out")
+      }).catch(()=>{
+        console.log("Error in logout")
+      })
+    }
+  }
   const settings = [
-    <button className="settings-btn" onClick={() => navigate("/login")}>
-      Login
+    <button className="settings-btn" onClick={handleLogout}>
+      LogOut
     </button>,
-    <button className="settings-btn" onClick={() => navigate("/register")}>
-      Signup
-    </button>,
+    
   ];
   const pages = [
     <HomeIcon />,
