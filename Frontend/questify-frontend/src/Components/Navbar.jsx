@@ -44,7 +44,7 @@ function Navbar() {
   const user = useSelector(selectUser)
   const navigate=useNavigate()
   const [cookies, removeCookie] = useCookies(['cookie']);
-  console.log(cookies)
+  
 
   const handleLogout=()=>{
     if(window.confirm("Are you sure to logout?")){
@@ -63,6 +63,9 @@ function Navbar() {
     }
   }
   const settings = [
+    <button className="settings-btn" onClick={()=>navigate('/profile')}>
+      Profile
+    </button>,
     <button className="settings-btn" onClick={handleLogout}>
       LogOut
     </button>,

@@ -10,6 +10,7 @@ import { login, selectUser } from './feature/userSlice';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
 import { useCookies } from 'react-cookie';
+import Profile from './Components/Profile';
 
 function App() {
   const [search,setSearch]=useState('')
@@ -42,6 +43,7 @@ function App() {
     <Route path='/home' element={cookie.cookie?<Home/>:<Login/>}/>
     <Route path='/' element={<Login/>}/>
     <Route path='/register' element={<Register/>}/>
+    <Route path='/profile' element={<Profile/>}/>
    </Routes>
    </myContext.Provider>
     </>
