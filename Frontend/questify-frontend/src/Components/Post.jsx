@@ -179,8 +179,8 @@ function Post({ post }) {
                   }}
                   className="post-info"
                 >
-                  <p>{a?.user?.userName}</p>
-                  <span className="timespan"><LastSeen date={a?.createdAt}/></span>
+                  <p>{a?.user?.userName} ● </p>
+                  <p className="timespan"><LastSeen date={a?.createdAt}/></p>
                 </div>
               </div>
     
