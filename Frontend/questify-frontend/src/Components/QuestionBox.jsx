@@ -10,7 +10,7 @@ function QuestionBox()  {
   return (
     <div className='QuestionBox'>
         <div className='QuestionBox-info'>
-            <Avatar src={user?.photo}/>
+            <Avatar alt='image' src={user?.photo}/>
         </div>
         <div className='QuestionBox-question'>
           <h5>Hello, {user?.userName}</h5>

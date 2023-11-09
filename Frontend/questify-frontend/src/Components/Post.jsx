@@ -31,6 +31,7 @@ function Post({ post }) {
   const [answer,setAnswer]=useState("")
   const Close = <CloseIcon />;
   const user=useSelector(selectUser)
+  
 
 
   const handleSubmit=async()=>{
@@ -62,7 +63,7 @@ function Post({ post }) {
   return (
     <div className="post">
       <div className="post-info">
-        <Avatar src={post?.user?.photo}/>
+        <Avatar alt="image" src={post?.user?.photo}/>
         <h4>{post?.user?.userName}</h4>
         <br />
         <small className="timestamp">
@@ -136,6 +137,7 @@ function Post({ post }) {
           fontWeight: "bold",
           margin: "10px 0",
         }}
+       
       >
         {post.allAnswers.length < 2 ? `${post.allAnswers.length} answer` : `${post.allAnswers.length} answers`}
 
@@ -172,7 +174,7 @@ function Post({ post }) {
                 }}
                 className="post-answered"
               >
-                <Avatar src={a?.user?.photo}/>
+                <Avatar alt="image" src={a?.user?.photo}/>
                 <div
                   style={{
                     margin: "0px 10px",
