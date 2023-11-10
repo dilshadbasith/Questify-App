@@ -15,8 +15,11 @@ import "react-quill/dist/quill.snow.css";
 import ReactHtmlParser from 'html-react-parser'
 import ReactTimeAgo from "react-time-ago";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../feature/userSlice";
+import { IconButton } from '@mui/material';
+import { setLike } from "../feature/newSlice";
+
 
 function LastSeen({ date }) {
   return (
@@ -31,8 +34,14 @@ function Post({ post }) {
   const [answer,setAnswer]=useState("")
   const Close = <CloseIcon />;
   const user=useSelector(selectUser)
-  
-
+   console.log(user)
+  const dispatch=useDispatch()
+const handleLike=()=>{
+  const question={user:user.uid,question:post?._id}
+  dispatch(setLike(question))
+  location.reload()
+// console.log(question)
+}
 
   const handleSubmit=async()=>{
     if(post?._id&&answer!==""){
@@ -121,8 +130,10 @@ function Post({ post }) {
       </div>
       <div className="post-footer">
         <div className="post-footerAction">
-          <ArrowUpwardIcon />
-          <ArrowDownwardIcon />
+          <IconButton onClick={()=>handleLike()}>{post?.likes?.includes(user?.uid)?<ArrowDownwardIcon />:<ArrowUpwardIcon />}
+          <h6>{post?.likes?.length} Likes</h6>
+          </IconButton>
+          
         </div>
         <ChatBubbleOutlineIcon />
         <ShareIcon />

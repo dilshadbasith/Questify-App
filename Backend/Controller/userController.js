@@ -3,6 +3,7 @@ const mongoose=require("mongoose")
 const bcrypt=require('bcrypt')
 const jwt = require("jsonwebtoken");
 const {joiUserSchema}=require('../Models/joiValidationSchema')
+const contentschema=require("../Models/Question")
 mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -59,6 +60,25 @@ mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
                 message:"Login successfull",
                 data:token
             })
+        }
+    },
+
+    setLike:async(req,res)=>{
+        const {id, user_id}= req.body;
+        console.log(id,user_id)
+        const likeUser=await contentschema.findOne({_id:id})
+        if(!likeUser.likes.includes(user_id)){
+            const setLike=await contentschema.updateOne(
+                {_id:id},
+                {$push:{likes:user_id}}
+            )
+            res.json(setLike)
+        }else{
+            const dislike = await contentschema.updateOne(
+                {_id:id},
+                {$pull:{likes:user_id}}
+            )
+            res.json(dislike)
         }
     }
   }

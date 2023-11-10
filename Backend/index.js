@@ -12,6 +12,7 @@ mongoose.connect("mongodb://0.0.0.0:27017/backend-project");
 app.use(cors())
 app.use(express.json())
 app.use('/api/user',userRoute)
+
 app.use('/api/questions',questionRoute)
 app.use('/api/answers',answerRoute)
 
