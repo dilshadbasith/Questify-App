@@ -11,6 +11,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
 import { useCookies } from 'react-cookie';
 import Profile from './Components/Profile';
+import AdminHome from './Components/Admin/AdminHome';
 
 function App() {
   const [search,setSearch]=useState('')
@@ -44,6 +45,7 @@ function App() {
     <Route path='/' element={<Login/>}/>
     <Route path='/register' element={<Register/>}/>
     <Route path='/profile' element={<Profile/>}/>
+    <Route path='/adminhome' element={<AdminHome/>}/>
    </Routes>
    </myContext.Provider>
     </>

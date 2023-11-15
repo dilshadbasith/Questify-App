@@ -24,8 +24,7 @@ function Login() {
         if(logger.data.status=="success"){
             if(logger.data.message=="Admin Logged in"){
                 setcookie("admincookie",logger.data.data)
-                alert('working')
-                // navigate('/adminhome')
+                navigate('/adminhome')
             }else{
 
                 setcookie("cookie",logger.data.data)
