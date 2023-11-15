@@ -7,11 +7,13 @@ const QuestionSchema=new mongoose.Schema({
         type:Date,
         default:Date.now()
     },
-    answers:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Answers"
-    },
+    
     user:Object,
+    //reference to user collection
+    users:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"users"
+    }
 })
 
 module.exports=mongoose.model("Questions",QuestionSchema)

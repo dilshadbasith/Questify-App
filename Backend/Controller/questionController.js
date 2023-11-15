@@ -8,21 +8,23 @@ mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
   module.exports={
     questions:async(req,res)=>{
         try{
-            await QuestionDB.create({
-                questionName:req.body.questionName,
-                questionUrl:req.body.questionUrl,
-                user:req.body.user
-            }).then(()=>{
-                res.status(201).send({
-                    status:true,
-                    message:"Question added successfully"
+            if(req.body.user){
+                await QuestionDB.create({
+                    questionName:req.body.questionName,
+                    questionUrl:req.body.questionUrl,
+                    user:req.body.user
+                }).then(()=>{
+                    res.status(201).send({
+                        status:true,
+                        message:"Question added successfully"
+                    })
+                }).catch((err)=>{
+                    res.status(400).send({
+                        status:false,
+                        message:"bad format"
+                    })
                 })
-            }).catch((err)=>{
-                res.status(400).send({
-                    status:false,
-                    message:"bad format"
-                })
-            })
+            }
         }catch(e){
             res.status(500).send({
                 status:false,
@@ -56,5 +58,19 @@ mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
                 message:"Unexpected error"
             })
         }
-    }
+    },
+    userquestion:async(req,res)=>{
+        try{
+                await QuestionDB.create({
+                    questionName:req.body.questionName,
+                    questionUrl:req.body.questionUrl,
+                    users:res.user
+                })
+        }catch(e){
+            res.status(500).send({
+                status:false,
+                message:"error while adding question"
+            }) 
+        }
+    },
   }

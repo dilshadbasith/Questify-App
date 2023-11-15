@@ -43,7 +43,7 @@ function Navbar() {
   const dispatch=useDispatch()
   const user = useSelector(selectUser)
   const navigate=useNavigate()
-  const [cookies, removeCookie] = useCookies(['cookie']);
+  const [cookies,setCookies, removeCookie] = useCookies(['cookie']);
   
 
   const handleLogout=()=>{
@@ -92,23 +92,47 @@ function Navbar() {
           "Content-Type": "application/json",
         },
       };
+      if(user){
+        const body = {
+          questionName: question,
+          questionUrl: inputUrl,
+          user:user,
+        };
+        // console.log(user)
 
-      const body = {
-        questionName: question,
-        questionUrl: inputUrl,
-        user:user,
-      };
-      await axios
-        .post("http://localhost:3000/api/questions", body, config)
-        .then((res) => {
-          console.log(res.data);
-          alert(res.data.message);
-          window.location.href = "/home";
-        })
-        .catch((e) => {
-          console.log(e);
-          alert("Error in adding question");
-        });
+        await axios
+          .post("http://localhost:3000/api/questions", body, config)
+          .then((res) => {
+            console.log(res.data);
+            alert(res.data.message);
+            window.location.href = "/home";
+          })
+          .catch((e) => {
+            console.log(e);
+            alert("Error in adding question");
+          });
+      }else if(cookies.cookie){
+        const body = {
+          questionName: question,
+          questionUrl: inputUrl,
+          
+        };
+        await axios
+          .post("http://localhost:3000/api/questions/userquestion", body,{
+            headers:{
+              Authorization:`bearer ${cookies.cookie}`
+            }
+          })
+          .then((res) => {
+            console.log(res.data);
+            alert(res.data.message);
+            window.location.href = "/home";
+          })
+          .catch((e) => {
+            console.log(e);
+            alert("Error in adding question");
+          });
+      }
     }
   };
 

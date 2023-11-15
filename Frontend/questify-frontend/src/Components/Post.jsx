@@ -42,7 +42,7 @@ const handleLike=()=>{
   location.reload()
 // console.log(question)
 }
-
+console.log(post)
   const handleSubmit=async()=>{
     if(post?._id&&answer!==""){
       const config={

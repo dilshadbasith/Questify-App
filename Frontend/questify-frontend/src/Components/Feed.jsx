@@ -20,6 +20,7 @@ function Feed() {
         console.log(e);
       });
   }, []);
+  //console.log(posts)
   return (
     <div className="feed">
       <QuestionBox />

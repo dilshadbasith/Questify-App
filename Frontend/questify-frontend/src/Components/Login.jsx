@@ -16,14 +16,21 @@ function Login() {
         e.preventDefault()
         const username = e.target.username.value
         const password=e.target.password.value
-        const logger=await axios.post("http://localhost:3000/api/user/login",{
+        const logger=await axios.post("http://localhost:3000/api/login",{
             "username":username,
             "password":password
         })
         
         if(logger.data.status=="success"){
-            setcookie("cookie",logger.data.data)
-            navigate('/home')
+            if(logger.data.message=="Admin Logged in"){
+                setcookie("admincookie",logger.data.data)
+                alert('working')
+                // navigate('/adminhome')
+            }else{
+
+                setcookie("cookie",logger.data.data)
+                navigate('/home')
+            }
         }else{
             alert("not a user")
         }
