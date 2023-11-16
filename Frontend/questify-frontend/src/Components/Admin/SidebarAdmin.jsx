@@ -7,6 +7,7 @@ function SidebarAdmin() {
     const navigate = useNavigate()
     const [cookie,setCookie,removeCookie]=useCookies(["admincookie"])
     const handleLogout=()=>{
+      window.confirm("Are you sure to logout?")
         removeCookie('admincookie')
         navigate('/')
     }
