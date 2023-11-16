@@ -3,10 +3,11 @@ import Card from "react-bootstrap/Card";
 import "../css/usersList.css";
 import axios from "axios";
 import { Avatar } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function UsersList() {
   const [userlists, setUserlists] = useState([]);
-  console.log(userlists);
+  const navigate = useNavigate()
   useEffect(() => {
     async function user() {
       const userlist = await axios.get(
@@ -22,7 +23,7 @@ function UsersList() {
       <div className="d-flex flex-column gap-3 ">
         {userlists.data
         ? userlists.data?.map((value) => (
-            <Card className="listgroup">
+            <Card className="listgroup" onClick={()=>navigate(`/browseuser/${value._id}`)}>
               <div className="elements">
                 <Avatar />
                 <Card.Body>{value.name}</Card.Body>          
