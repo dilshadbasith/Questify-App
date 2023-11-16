@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const mongoose=require("mongoose");
+const userSchema=require('../Models/userSchema')
 require("dotenv").config();
 mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
     useNewUrlParser: true,
@@ -26,4 +27,8 @@ mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
           return res.status(404).json({ error: "Not an admin" });
         }
       },
+      getUsers:async(req,res)=>{
+        const users=await userSchema.find()
+        res.json(users)
+      }
   }

@@ -17,6 +17,7 @@ function App() {
   const [search,setSearch]=useState('')
   const dispatch=useDispatch() 
   const [cookie]=useCookies(["cookie"])
+  const [cookies]=useCookies(["admincookie"])
 
   useEffect(()=>{
     onAuthStateChanged(auth,(authUser)=>{
@@ -45,7 +46,7 @@ function App() {
     <Route path='/' element={<Login/>}/>
     <Route path='/register' element={<Register/>}/>
     <Route path='/profile' element={<Profile/>}/>
-    <Route path='/adminhome' element={<AdminHome/>}/>
+    <Route path='/adminhome' element={cookies.admincookie?<AdminHome/>:<Login/>}/>
    </Routes>
    </myContext.Provider>
     </>

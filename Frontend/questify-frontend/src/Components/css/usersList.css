@@ -1,0 +1,11 @@
+.listgroup{
+    width: 80vw;
+}
+.main{
+    position: relative;
+    
+}
+.elements{
+    display: flex;
+    align-items: center;
+}
