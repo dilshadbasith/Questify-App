@@ -10,6 +10,7 @@ mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
         try{
             await answerDB.create({
                 answer:req.body.answer,
+                //destructure it
                 questionId:req.body.questionId,
                 user:req.body.user,
             }).then(()=>{

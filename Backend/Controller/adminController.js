@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const mongoose=require("mongoose");
 const userSchema=require('../Models/userSchema')
+const questionSchema=require('../Models/Question')
 require("dotenv").config();
 mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
     useNewUrlParser: true,
@@ -30,5 +31,9 @@ mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
       getUsers:async(req,res)=>{
         const users=await userSchema.find()
         res.json(users)
+      },
+      getQuestions:async(req,res)=>{
+        const questions=await questionSchema.find()
+        res.json(questions)
       }
   }

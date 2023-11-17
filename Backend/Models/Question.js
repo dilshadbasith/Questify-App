@@ -9,7 +9,6 @@ const QuestionSchema=new mongoose.Schema({
     },
     
     user:Object,
-    //reference to user collection
     users:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"users"

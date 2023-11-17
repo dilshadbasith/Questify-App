@@ -13,6 +13,7 @@ import { useCookies } from 'react-cookie';
 import Profile from './Components/Profile';
 import AdminHome from './Components/Admin/AdminHome';
 import BrowseUser from './Components/Admin/BrowseUser';
+import UsersList from './Components/Admin/UsersList';
 
 function App() {
   const [search,setSearch]=useState('')
@@ -48,6 +49,7 @@ function App() {
     <Route path='/register' element={<Register/>}/>
     <Route path='/profile' element={<Profile/>}/>
     <Route path='/adminhome' element={cookies.admincookie?<AdminHome/>:<Login/>}/>
+    <Route path='/userslist' element={<UsersList/>}/>
     <Route path='/browseuser/:id' element={<BrowseUser/>}/>
    </Routes>
    </myContext.Provider>
