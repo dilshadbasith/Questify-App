@@ -4,6 +4,8 @@ import "../css/usersList.css";
 import axios from "axios";
 import { Avatar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import SidebarAdmin from "./SidebarAdmin";
+import '../css/AdminHome.css'
 
 function UsersList() {
   const [userlists, setUserlists] = useState([]);
@@ -18,6 +20,8 @@ function UsersList() {
     user();
   }, []);
   return (
+    <div className="homepage">
+      <div><SidebarAdmin/></div>
     <div className="main">
       <h1>users</h1>
       <div className="d-flex flex-column gap-3 ">
@@ -31,8 +35,8 @@ function UsersList() {
             </Card>
           ))
         : null}
-        </div>
-      
+        </div>     
+    </div>
     </div>
   );
 }

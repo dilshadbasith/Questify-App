@@ -150,7 +150,7 @@ console.log(post)
         }}
        
       >
-        {post.allAnswers.length < 2 ? `${post.allAnswers.length} answer` : `${post.allAnswers.length} answers`}
+        {post?.allAnswers?.length < 2 ? `${post?.allAnswers?.length} answer` : `${post?.allAnswers?.length} answers`}
 
       </p>
       <div

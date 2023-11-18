@@ -9,7 +9,7 @@ function BrowseUser() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [userlists, setUserlists] = useState([]);
-  console.log(userlists);
+  // console.log(userlists);
   useEffect(() => {
     async function user() {
       const userlist = await axios.get(
@@ -28,7 +28,7 @@ function BrowseUser() {
             <div>
               <ArrowBackIcon
                 className="back-btn"
-                onClick={() => navigate("/adminhome")}
+                onClick={() => navigate("/userslist")}
               />
               <Avatar
                 sx={{

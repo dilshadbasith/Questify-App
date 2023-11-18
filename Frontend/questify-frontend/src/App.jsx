@@ -14,6 +14,7 @@ import Profile from './Components/Profile';
 import AdminHome from './Components/Admin/AdminHome';
 import BrowseUser from './Components/Admin/BrowseUser';
 import UsersList from './Components/Admin/UsersList';
+import AdminQuestions from './Components/Admin/AdminQuestions';
 
 function App() {
   const [search,setSearch]=useState('')
@@ -51,6 +52,7 @@ function App() {
     <Route path='/adminhome' element={cookies.admincookie?<AdminHome/>:<Login/>}/>
     <Route path='/userslist' element={<UsersList/>}/>
     <Route path='/browseuser/:id' element={<BrowseUser/>}/>
+    <Route path='/posts' element={<AdminQuestions/>}/>
    </Routes>
    </myContext.Provider>
     </>

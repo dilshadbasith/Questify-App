@@ -14,8 +14,8 @@ function SidebarAdmin() {
   return (
     <div className='sidebar-admin'>
         <div><h2>Admin</h2></div><br /><br />
-        <div><h4>Users List</h4></div><br />
-        <div><h4>Questions</h4></div><br />
+        <div><h4 onClick={()=>navigate('/userslist')}>Users List</h4></div><br />
+        <div><h4 onClick={()=>navigate('/posts')}>Questions</h4></div><br />
         <div><h4>Answers</h4></div><br /><br /><br />
         <div><h4 onClick={handleLogout} style={{cursor:"pointer"}}>Logout</h4></div>
     </div>
