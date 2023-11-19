@@ -2,6 +2,7 @@ import React from 'react'
 import '../css/sidebarAdmin.css'
 import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
+import '../css/AdminSidebar.css'
 
 function SidebarAdmin() {
     const navigate = useNavigate()
@@ -14,9 +15,9 @@ function SidebarAdmin() {
   return (
     <div className='sidebar-admin'>
         <div><h2>Admin</h2></div><br /><br />
-        <div><h4 onClick={()=>navigate('/userslist')}>Users List</h4></div><br />
-        <div><h4 onClick={()=>navigate('/posts')}>Questions</h4></div><br />
-        <div><h4>Answers</h4></div><br /><br /><br />
+        <div className='sidebarsubdiv'><h4 onClick={()=>navigate('/userslist')}>Users List</h4></div><br />
+        <div className='sidebarsubdiv'><h4 onClick={()=>navigate('/posts')}>Questions</h4></div><br />
+        <div className='sidebarsubdiv'><h4 onClick={()=>navigate('/adminanswers')}>Answers</h4></div><br /><br /><br />
         <div><h4 onClick={handleLogout} style={{cursor:"pointer"}}>Logout</h4></div>
     </div>
   )

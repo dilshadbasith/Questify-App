@@ -1,0 +1,7 @@
+.sidebarsubdiv{
+    cursor: pointer;
+    border-style: solid;
+    border-color: rgb(116, 116, 116);
+    border-width: 1px;
+    padding: 5px 5px 5px 5px;
+}

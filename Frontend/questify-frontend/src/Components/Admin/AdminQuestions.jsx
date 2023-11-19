@@ -20,6 +20,7 @@ function AdminQuestions() {
     <div className="homepage">
         <div><SidebarAdmin/></div>
         <div>
+          <h1>Questions</h1>
         {questionlists.map((post,index)=>(
             <Post key={index} post={post}/>
         ))}

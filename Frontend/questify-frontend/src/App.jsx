@@ -15,6 +15,7 @@ import AdminHome from './Components/Admin/AdminHome';
 import BrowseUser from './Components/Admin/BrowseUser';
 import UsersList from './Components/Admin/UsersList';
 import AdminQuestions from './Components/Admin/AdminQuestions';
+import AdminAnswers from './Components/Admin/AdminAnswers';
 
 function App() {
   const [search,setSearch]=useState('')
@@ -53,6 +54,7 @@ function App() {
     <Route path='/userslist' element={<UsersList/>}/>
     <Route path='/browseuser/:id' element={<BrowseUser/>}/>
     <Route path='/posts' element={<AdminQuestions/>}/>
+    <Route path='/adminanswers' element={<AdminAnswers/>}/>
    </Routes>
    </myContext.Provider>
     </>
