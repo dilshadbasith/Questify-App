@@ -17,12 +17,15 @@ function AdminQuestions() {
         question();
       }, []);
   return (
-    <div className="homepage">
+    <div>
         <div><SidebarAdmin/></div>
-        <div>
+        <div className='questions'>
           <h1>Questions</h1>
         {questionlists.map((post,index)=>(
-            <Post key={index} post={post}/>
+          <div>
+            <Post key={index} post={post}  />
+            <button>Delete</button>
+            </div>
         ))}
         </div>
     </div>

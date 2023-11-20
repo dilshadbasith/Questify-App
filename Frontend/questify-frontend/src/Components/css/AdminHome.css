@@ -2,3 +2,15 @@
     display: flex;
 justify-content: space-between;
 }
+.questions{
+    position: relative;
+    left: 300px;
+}
+.answers{
+    position: relative;
+    left: 300px;
+}
+.place-delete{
+    display: flex;
+    justify-content: space-between;
+}

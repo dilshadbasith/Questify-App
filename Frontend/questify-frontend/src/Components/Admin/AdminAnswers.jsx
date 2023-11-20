@@ -28,11 +28,11 @@ function AdminAnswers() {
   }, []);
 
   return (
-    <div className="homepage">
+    <div>
       <div>
         <SidebarAdmin />
       </div>
-      <div>
+      <div className="answers">
         <h1>Answers</h1>
         {answerlists?.map((a) => (
           <>
@@ -70,8 +70,10 @@ function AdminAnswers() {
                   </p>
                 </div>
               </div>
-
               <div className="post-answer">{ReactHtmlParser(a.answer)}</div>
+              <div>
+                <button>Delete</button>
+              </div>
             </div>
           </>
         ))}
