@@ -24,7 +24,7 @@ function AdminQuestions() {
         {questionlists.map((post,index)=>(
           <div>
             <Post key={index} post={post}  />
-            <button>Delete</button>
+            <button className='dlt-btn'>Delete</button>
             </div>
         ))}
         </div>

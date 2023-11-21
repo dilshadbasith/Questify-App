@@ -8,6 +8,7 @@ function AdminHome() {
   return (
     <div className='homepage'>
     <div><SidebarAdmin/></div>
+    <h1 style={{position:"relative",right:"450px",top:"250px",fontFamily:"monospace"}}>Welcome Admin</h1>
     {/* <div><UsersList/></div> */}
     {/* <div><AdminQuestions/></div> */}
     </div>

@@ -72,7 +72,7 @@ function AdminAnswers() {
               </div>
               <div className="post-answer">{ReactHtmlParser(a.answer)}</div>
               <div>
-                <button>Delete</button>
+                <button className="dlt-btn">Delete</button>
               </div>
             </div>
           </>
