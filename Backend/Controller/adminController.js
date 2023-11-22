@@ -15,7 +15,7 @@ mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
           username === process.env.ADMIN_USERNAME &&
           password === process.env.ADMIN_PASSWORD
         ) {
-          //TODO store at .env
+          
           const token = jwt.sign(
             { username: username },
             process.env.ADMIN_ACCESS_TOKEN_SECRET
@@ -40,5 +40,10 @@ mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
       getAnswers:async(req,res)=>{
         const answers = await answerSchema.find()
         res.json(answers)
+      },
+      deleteAnswers:async(req,res)=>{
+        await answerSchema.deleteOne({_id:req.params.id})
+        res.json("successfull")       
       }
+
   }

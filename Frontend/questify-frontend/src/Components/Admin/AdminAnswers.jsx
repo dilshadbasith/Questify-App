@@ -7,6 +7,7 @@ import "../css/AdminHome.css";
 import SidebarAdmin from "./SidebarAdmin";
 
 function LastSeen({ date }) {
+  
   return (
     <div>
       <ReactTimeAgo date={date} locale="en-US" timeStyle="round" />
@@ -16,6 +17,11 @@ function LastSeen({ date }) {
 function AdminAnswers() {
   const [answerlists, setAnswerlists] = useState([]);
   console.log(answerlists);
+
+  const handleDelete=async(id)=>{
+   await axios.delete( `http://localhost:3000/api/admin/deleteanswer/${id}`)
+   location.reload()
+  }
 
   useEffect(() => {
     async function answer() {
@@ -72,7 +78,7 @@ function AdminAnswers() {
               </div>
               <div className="post-answer">{ReactHtmlParser(a.answer)}</div>
               <div>
-                <button className="dlt-btn">Delete</button>
+                <button className="dlt-btn" onClick={()=>handleDelete(a._id)}>Delete</button>
               </div>
             </div>
           </>

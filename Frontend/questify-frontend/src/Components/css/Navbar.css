@@ -118,6 +118,9 @@
     width: 50%;
     height: 75%;
   }
+  .appbar{
+    background-color: #ffffffbe;
+  }
   
   @media only screen and (max-width: 600px) {
     .qHeader-icons {
