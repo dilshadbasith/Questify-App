@@ -7,6 +7,10 @@ import '../css/AdminHome.css'
 
 function AdminQuestions() {
     const [questionlists, setQuestionlists] = useState([]);
+    const handleDelete=async(id)=>{
+      await axios.delete(`http://localhost:3000/api/admin/deletequestion/${id}`)
+      location.reload()
+    }
     useEffect(() => {
         async function question() {
           const questionlist = await axios.get(
@@ -24,7 +28,7 @@ function AdminQuestions() {
         {questionlists.map((post,index)=>(
           <div>
             <Post key={index} post={post}  />
-            <button className='dlt-btn'>Delete</button>
+            <button className='dlt-btn' onClick={()=>handleDelete(post._id)}>Delete</button>
             </div>
         ))}
         </div>

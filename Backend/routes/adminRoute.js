@@ -6,5 +6,6 @@ router.get("/getuser", controller.getUsers);
 router.get("/getquestions", controller.getQuestions);
 router.get("/getanswers", controller.getAnswers);
 router.delete("/deleteanswer/:id", controller.deleteAnswers);
+router.delete("/deletequestion/:id", controller.deleteQuestions);
 
 module.exports = router;

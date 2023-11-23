@@ -44,6 +44,10 @@ mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
       deleteAnswers:async(req,res)=>{
         await answerSchema.deleteOne({_id:req.params.id})
         res.json("successfull")       
+      },
+      deleteQuestions:async(req,res)=>{
+        await questionSchema.deleteOne({_id:req.params.id})
+        res.json("successfull")
       }
 
   }
