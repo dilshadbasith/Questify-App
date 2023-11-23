@@ -23,11 +23,11 @@ function UsersList() {
     <div className="homepage">
       <div><SidebarAdmin/></div>
     <div className="main">
-      <h1>users</h1>
+      <h1 >users</h1>
       <div className="d-flex flex-column gap-3 ">
         {userlists.data
         ? userlists.data?.map((value) => (
-            <Card className="listgroup" onClick={()=>navigate(`/browseuser/${value._id}`)}>
+            <Card style={{cursor:"pointer"}} className="listgroup" onClick={()=>navigate(`/browseuser/${value._id}`)}>
               <div className="elements">
                 <Avatar />
                 <Card.Body>{value.name}</Card.Body>          
