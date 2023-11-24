@@ -8,11 +8,12 @@ mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
   module.exports={
     answers:async(req,res)=>{
         try{
+            const {answer,questionId,user}=req.body
             await answerDB.create({
-                answer:req.body.answer,
+                answer:answer,
                 //destructure it
-                questionId:req.body.questionId,
-                user:req.body.user,
+                questionId:questionId,
+                user:user,
             }).then(()=>{
                 res.status(201).send({
                     status:true,
