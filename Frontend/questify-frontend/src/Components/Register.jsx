@@ -22,7 +22,7 @@ function Register() {
     }
 
   return (
-    <div className='d-flex justify-content-center align-items-center '>
+    <div className='page '>
         <form action="" onSubmit={Register}>
     <div className='cover'>
        <div> <h1 className='loginh1'>Register</h1></div>

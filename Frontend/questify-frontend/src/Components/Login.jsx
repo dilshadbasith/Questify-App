@@ -46,7 +46,7 @@ function Login() {
         })
     }
   return (
-    <div className='d-flex justify-content-center align-items-center '>
+    <div className='page'>
         <form action="" onSubmit={Login}>
     <div className='cover'>
         <img className='logo' src={Logo} alt="logo" />
