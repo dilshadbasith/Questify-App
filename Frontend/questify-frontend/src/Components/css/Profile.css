@@ -1,12 +1,14 @@
 .maindiv{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    justify-content: space-around;
 }
 .email{
     color: rgb(114, 114, 114);
 }
 .back-btn{
     cursor: pointer;
+}
+.card{
+    position: relative;
+    top: 50%;
 }

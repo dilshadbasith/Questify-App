@@ -1,16 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Avatar } from "@mui/material";
 import { Card } from 'react-bootstrap';
-import "../css/Profile.css";
+import "../css/BrowseUser.css";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../feature/userSlice";
 
 function BrowseUser() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const user = useSelector(selectUser);
   const [userlists, setUserlists] = useState([]);
   // console.log(userlists);
@@ -28,7 +26,7 @@ function BrowseUser() {
       {userlists
         .filter((value) => value._id == id)
         .map((value) => (
-          <div className="maindiv">
+          <div className="maind">
             {/* <div>
               <ArrowBackIcon
                 className="back-btn"

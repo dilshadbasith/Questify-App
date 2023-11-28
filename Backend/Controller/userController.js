@@ -4,6 +4,7 @@ const bcrypt=require('bcrypt')
 const jwt = require("jsonwebtoken");
 const {joiUserSchema}=require('../Models/joiValidationSchema')
 const contentschema=require("../Models/Question")
+const answerSchema=require("../Models/Answer")
 mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -79,6 +80,37 @@ mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
                 {$pull:{likes:user_id}}
             )
             res.json(dislike)
+        }
+    },
+    profilequestions:async(req,res)=>{
+        const{uid}=req.body
+        try{
+            await contentschema.aggregate([
+                { $match : {"user.uid":uid} },
+                {
+                   
+                    
+                    $lookup:{
+                        from:"answers",
+                        localField:"_id",
+                        foreignField:"questionId",
+                        as:"allAnswers"
+                    }
+                }
+            ]).exec().then((doc)=>{
+                console.log(doc)
+                res.status(200).send(doc)
+            }).catch((error)=>{
+                res.status(500).send({
+                    status:false,
+                    message:"Unable to get the question details"
+                })
+            })
+        }catch(e){
+            res.status(500).send({
+                status:false,
+                message:e.message
+            })
         }
     }
   }
