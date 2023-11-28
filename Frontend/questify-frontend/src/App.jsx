@@ -17,6 +17,7 @@ import UsersList from './Components/Admin/UsersList';
 import AdminQuestions from './Components/Admin/AdminQuestions';
 import AdminAnswers from './Components/Admin/AdminAnswers';
 import ErrorPage from './Components/ErrorPage';
+import ProfilePosts from './Components/ProfilePosts';
 
 function App() {
   const [search,setSearch]=useState('')
@@ -56,6 +57,7 @@ function App() {
     <Route path='/browseuser/:id' element={<BrowseUser/>}/>
     <Route path='/posts' element={<AdminQuestions/>}/>
     <Route path='/adminanswers' element={<AdminAnswers/>}/>
+    <Route path='/profileposts' element={<ProfilePosts/>}/>
     <Route path='/*' element={<ErrorPage/>}/>
    </Routes>
    </myContext.Provider>

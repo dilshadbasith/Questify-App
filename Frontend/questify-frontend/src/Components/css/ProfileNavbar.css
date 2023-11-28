@@ -1,0 +1,11 @@
+.avatardiv{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+.navprofile{
+    height: 70px;
+    width: 100%;
+    background-color: rgb(192, 192, 192);
+    
+}
