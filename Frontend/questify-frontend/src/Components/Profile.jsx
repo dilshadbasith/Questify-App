@@ -6,14 +6,12 @@ import { selectUser } from "../feature/userSlice";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from "react-router-dom";
 import { Card } from 'react-bootstrap';
-import axios from "axios";
-import Post from "./Post";
+
 
 function Profile() {
   const user = useSelector(selectUser);
-  console.log(user)
   const navigate = useNavigate() 
-  const [posts, setPosts] = useState([]);
+
 
 
   
