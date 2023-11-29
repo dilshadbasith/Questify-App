@@ -18,6 +18,7 @@ import AdminQuestions from './Components/Admin/AdminQuestions';
 import AdminAnswers from './Components/Admin/AdminAnswers';
 import ErrorPage from './Components/ErrorPage';
 import ProfilePosts from './Components/ProfilePosts';
+import ProfileAnswers from './Components/ProfileAnswers';
 
 function App() {
   const [search,setSearch]=useState('')
@@ -58,6 +59,7 @@ function App() {
     <Route path='/posts' element={<AdminQuestions/>}/>
     <Route path='/adminanswers' element={<AdminAnswers/>}/>
     <Route path='/profileposts' element={<ProfilePosts/>}/>
+    <Route path='/profileanswers' element={<ProfileAnswers/>}/>
     <Route path='/*' element={<ErrorPage/>}/>
    </Routes>
    </myContext.Provider>

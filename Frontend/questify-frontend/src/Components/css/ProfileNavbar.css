@@ -9,3 +9,13 @@
     background-color: rgb(192, 192, 192);
     
 }
+.navmain{
+  display: flex;
+  justify-content: space-between;  
+  align-items: center;
+}
+.answer-btn-div{
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+}

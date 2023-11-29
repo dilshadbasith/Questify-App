@@ -112,5 +112,36 @@ mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
                 message:e.message
             })
         }
+    },
+    profileanswers:async(req,res)=>{
+        const{uid}=req.body
+        try{
+            await answerSchema.aggregate([
+                { $match : {"user.uid":uid} },
+                {
+                   
+                    
+                    $lookup:{
+                        from:"answers",
+                        localField:"_id",
+                        foreignField:"questionId",
+                        as:"allAnswers"
+                    }
+                }
+            ]).exec().then((doc)=>{
+                console.log(doc)
+                res.status(200).send(doc)
+            }).catch((error)=>{
+                res.status(500).send({
+                    status:false,
+                    message:"Unable to get the answer details"
+                })
+            })
+        }catch(e){
+            res.status(500).send({
+                status:false,
+                message:e.message
+            })
+        }
     }
   }
