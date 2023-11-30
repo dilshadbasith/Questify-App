@@ -6,6 +6,7 @@ import ProfileNavbar from './ProfileNavbar';
 import { Avatar } from '@mui/material';
 import ReactHtmlParser from "html-react-parser";
 import ReactTimeAgo from "react-time-ago";
+import { Button } from 'react-bootstrap';
 
 
 function LastSeen({ date }) {
@@ -19,6 +20,13 @@ function LastSeen({ date }) {
 function ProfileAnswers() {
     const [answerlists, setAnswerlists] = useState([]);
     const user = useSelector(selectUser);
+
+
+    const handleDelete=async(id)=>{
+      await axios.delete( `http://localhost:3000/api/admin/deleteanswer/${id}`)
+      location.reload()
+     }
+
     useEffect(() => {
         axios
           .post("http://localhost:3000/api/user/profileanswers", {
@@ -75,7 +83,7 @@ function ProfileAnswers() {
               </div>
               <div className="post-answer">{ReactHtmlParser(a.answer)}</div>
               <div>
-                
+              <Button variant='danger' onClick={()=>handleDelete(a._id)}>Delete</Button>
               </div>
             </div>
           </>
