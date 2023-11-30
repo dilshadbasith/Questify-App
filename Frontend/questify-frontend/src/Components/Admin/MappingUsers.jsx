@@ -10,7 +10,7 @@ function MappingUsers({ userlists }) {
   return (
     <div>
       {userlists
-        ? userlists?.map((value,index) => (
+        ? userlists?.map((value, index) => (
             <Card
               style={{ cursor: "pointer" }}
               className="listgroup"
@@ -19,7 +19,9 @@ function MappingUsers({ userlists }) {
             >
               <div className="elements">
                 <Avatar />
-                <Card.Body>{value.name}</Card.Body>
+                <Card.Body>
+                  <h6>{value.name}</h6>
+                </Card.Body>
               </div>
             </Card>
           ))
