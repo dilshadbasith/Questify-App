@@ -12,7 +12,7 @@ function MappingUsers({ userlists }) {
       {userlists
         ? userlists?.map((value, index) => (
             <Card
-              style={{ cursor: "pointer" }}
+              
               className="listgroup"
               onClick={() => navigate(`/browseuser/${value._id}`)}
               key={index}
