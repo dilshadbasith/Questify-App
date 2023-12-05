@@ -16,8 +16,9 @@ function ProfileNavbar() {
         <h2>{user?.userName}</h2>
         </div>
         <div className='answer-btn-div'>
-            <h5 onClick={()=>navigate('/profileposts')}>Questions</h5>
-            <h5 onClick={()=>navigate('/profileanswers')}>Answers</h5>
+            <h5 onClick={()=>navigate('/home')} style={{cursor:"pointer"}}>Home</h5>
+            <h5 onClick={()=>navigate('/profileposts')} style={{cursor:"pointer"}}>Questions</h5>
+            <h5 onClick={()=>navigate('/profileanswers')} style={{cursor:"pointer"}}>Answers</h5>
         </div>
         </div>
     </div>
