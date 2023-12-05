@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 function ProfileNavbar() {
     const user = useSelector(selectUser);
     const navigate=useNavigate()
+ 
+    
   return (
     <div className='navprofile'>
         <div className='navmain'>
@@ -18,7 +20,7 @@ function ProfileNavbar() {
         <div className='answer-btn-div'>
             <h5 onClick={()=>navigate('/home')} style={{cursor:"pointer"}}>Home</h5>
             <h5 onClick={()=>navigate('/profileposts')} style={{cursor:"pointer"}}>Questions</h5>
-            <h5 onClick={()=>navigate('/profileanswers')} style={{cursor:"pointer"}}>Answers</h5>
+            <h5 onClick={()=>navigate('/profileanswers')} style={{cursor:"pointer"}} >Answers</h5>
         </div>
         </div>
     </div>

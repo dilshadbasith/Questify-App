@@ -7,6 +7,8 @@ import Google from './assets/google.png'
 import {signInWithPopup} from 'firebase/auth'
 import { auth, provider } from '../firebase'
 import { useCookies } from 'react-cookie';
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 function Login() {
@@ -25,10 +27,12 @@ function Login() {
             if(logger.data.message=="Admin Logged in"){
                 setcookie("admincookie",logger.data.data)
                 navigate('/adminhome')
+                toast.success("Admin Login Successfull")
             }else{
 
                 setcookie("cookie",logger.data.data)
                 navigate('/home')
+                toast.success(data.message)
             }
         }else{
             alert("not a user")
@@ -40,9 +44,11 @@ function Login() {
         .then((result)=>{
             setcookie("cookie","auth")
             navigate('/home')
+            toast.success("Login successfull")
             console.log(result)
         }).catch((error)=>{
             console.log(error)
+            toast.error(error.message)
         })
     }
   return (

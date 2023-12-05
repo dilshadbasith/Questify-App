@@ -19,6 +19,7 @@ import AdminAnswers from './Components/Admin/AdminAnswers';
 import ErrorPage from './Components/ErrorPage';
 import ProfilePosts from './Components/ProfilePosts';
 import ProfileAnswers from './Components/ProfileAnswers';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const [search,setSearch]=useState('')
@@ -44,6 +45,7 @@ function App() {
 
   return (
     <>
+    <ToastContainer/>
     <myContext.Provider value={{search,setSearch}}>
     {/* {
       user? (<Home/>) : (<Login/>)
