@@ -5,10 +5,7 @@ const jwt = require("jsonwebtoken");
 const {joiUserSchema}=require('../Models/joiValidationSchema')
 const contentschema=require("../Models/Question")
 const answerSchema=require("../Models/Answer")
-mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+
   module.exports={
     registration:async(req,res)=>{
         const {value,error}=joiUserSchema.validate(req.body);

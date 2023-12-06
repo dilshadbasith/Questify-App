@@ -1,9 +1,5 @@
 const mongoose=require('mongoose')
 const QuestionDB=require('../Models/Question')
-mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
 
   module.exports={
     questions:async(req,res)=>{

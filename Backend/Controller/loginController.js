@@ -5,10 +5,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { joiUserSchema } = require("../Models/joiValidationSchema");
 const contentschema = require("../Models/Question");
-mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+
 module.exports = {
   Login: async (req, res) => {
     const { value, error } = joiUserSchema.validate(req.body);

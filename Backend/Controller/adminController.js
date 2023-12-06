@@ -4,10 +4,7 @@ const userSchema=require('../Models/userSchema')
 const questionSchema=require('../Models/Question')
 const answerSchema=require('../Models/Answer')
 require("dotenv").config();
-mongoose.connect("mongodb://0.0.0.0:27017/backend-project", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+
   module.exports={
     login: async (req, res) => {
         const { username, password } = req.body;

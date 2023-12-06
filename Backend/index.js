@@ -10,7 +10,7 @@ const questionRoute=require('./routes/questionRoute')
 const answerRoute=require('./routes/answerRoute')
 const loginRoute=require('./routes/loginRoute')
 mongoose.connect(process.env.MONGO_URL)
-.then(()=>console.log("connected"))
+.then(()=>console.log("connected")).catch((err)=>console.log(err.message))
 
 app.use(cors())
 app.use(express.json())
