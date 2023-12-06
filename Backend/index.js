@@ -9,7 +9,7 @@ const adminRoute=require('./routes/adminRoute')
 const questionRoute=require('./routes/questionRoute')
 const answerRoute=require('./routes/answerRoute')
 const loginRoute=require('./routes/loginRoute')
-mongoose.connect("mongodb://0.0.0.0:27017/backend-project")
+mongoose.connect(process.env.MONGO_URL)
 .then(()=>console.log("connected"))
 
 app.use(cors())
