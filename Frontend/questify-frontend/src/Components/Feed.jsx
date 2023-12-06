@@ -11,7 +11,7 @@ function Feed() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/questions")
+      .get("https://questify-ttdm.onrender.com/api/questions")
       .then((res) => {
         console.log(res.data.reverse());
         setPosts(res.data);

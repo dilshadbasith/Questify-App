@@ -18,7 +18,7 @@ function Login() {
         e.preventDefault()
         const username = e.target.username.value
         const password=e.target.password.value
-        const logger=await axios.post("http://localhost:3000/api/login",{
+        const logger=await axios.post("https://questify-ttdm.onrender.com/api/login",{
             "username":username,
             "password":password
         })

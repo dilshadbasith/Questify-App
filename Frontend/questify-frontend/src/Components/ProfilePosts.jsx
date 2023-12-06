@@ -12,14 +12,14 @@ function ProfilePosts() {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure to delete?")) {
       await axios.delete(
-        `http://localhost:3000/api/admin/deletequestion/${id}`
+        `https://questify-ttdm.onrender.com/api/admin/deletequestion/${id}`
       );
       location.reload();
     }
   };
   useEffect(() => {
     axios
-      .post("http://localhost:3000/api/user/profilequestions", {
+      .post("https://questify-ttdm.onrender.com/api/user/profilequestions", {
         uid: user?.uid,
       })
       .then((res) => {

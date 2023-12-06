@@ -55,7 +55,7 @@ console.log(post)
         questionId:post?._id,
         user:user
       }
-      await axios.post('http://localhost:3000/api/answers',body,config).then((res)=>{
+      await axios.post('https://questify-ttdm.onrender.com/api/answers',body,config).then((res)=>{
         console.log(res.data)
         alert("Answer added successfully")
         setIsModalOpen(false)

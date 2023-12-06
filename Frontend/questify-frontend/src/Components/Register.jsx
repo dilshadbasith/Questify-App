@@ -12,7 +12,7 @@ function Register() {
         const email=e.target.email.value
         const username=e.target.username.value
         const password=e.target.password.value
-        await axios.post("http://localhost:3000/api/user/register",{
+        await axios.post("https://questify-ttdm.onrender.com/api/user/register",{
                    "name":name,
                    "email":email,
                    "username":username,

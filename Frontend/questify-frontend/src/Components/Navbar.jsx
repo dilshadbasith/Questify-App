@@ -101,7 +101,7 @@ function Navbar() {
         // console.log(user)
 
         await axios
-          .post("http://localhost:3000/api/questions", body, config)
+          .post("https://questify-ttdm.onrender.com/api/questions", body, config)
           .then((res) => {
             console.log(res.data);
             alert(res.data.message);
@@ -118,7 +118,7 @@ function Navbar() {
           
         };
         await axios
-          .post("http://localhost:3000/api/questions/userquestion", body,{
+          .post("https://questify-ttdm.onrender.com/api/questions/userquestion", body,{
             headers:{
               Authorization:`bearer ${cookies.cookie}`
             }
