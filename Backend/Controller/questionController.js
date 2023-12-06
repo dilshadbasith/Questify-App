@@ -1,4 +1,4 @@
-const mongoose=require('mongoose')
+
 const QuestionDB=require('../Models/Question')
 
   module.exports={

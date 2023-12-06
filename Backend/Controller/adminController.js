@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const mongoose=require("mongoose");
+
 const userSchema=require('../Models/userSchema')
 const questionSchema=require('../Models/Question')
 const answerSchema=require('../Models/Answer')

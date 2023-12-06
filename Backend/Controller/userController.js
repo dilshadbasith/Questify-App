@@ -1,5 +1,5 @@
 const User=require("../Models/userSchema")
-const mongoose=require("mongoose")
+
 const bcrypt=require('bcrypt')
 const jwt = require("jsonwebtoken");
 const {joiUserSchema}=require('../Models/joiValidationSchema')
