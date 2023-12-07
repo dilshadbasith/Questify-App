@@ -3,8 +3,8 @@ import "../css/Pagination.css";
 
 function Pagination({ totalUsers, usersperpage, setCurrentpage, currentpage }) {
   let pages = [];
-//   console.log(totalUsers, usersperpage);
-  //console.log(pages)
+
+
 
   for (let i = 1; i <= Math.ceil(totalUsers / usersperpage); i++) {
     pages.push(i);

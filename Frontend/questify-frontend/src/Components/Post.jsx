@@ -34,15 +34,15 @@ function Post({ post }) {
   const [answer,setAnswer]=useState("")
   const Close = <CloseIcon />;
   const user=useSelector(selectUser)
-   console.log(user)
+   
   const dispatch=useDispatch()
 const handleLike=()=>{
   const question={user:user.uid,question:post?._id}
   dispatch(setLike(question))
   location.reload()
-// console.log(question)
+
 }
-console.log(post)
+
   const handleSubmit=async()=>{
     if(post?._id&&answer!==""){
       const config={
@@ -56,7 +56,7 @@ console.log(post)
         user:user
       }
       await axios.post('https://questify-ttdm.onrender.com/api/answers',body,config).then((res)=>{
-        console.log(res.data)
+        
         alert("Answer added successfully")
         setIsModalOpen(false)
         window.location.href = '/home'

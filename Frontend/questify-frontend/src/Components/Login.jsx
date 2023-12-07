@@ -45,7 +45,6 @@ function Login() {
             setcookie("cookie","auth")
             navigate('/home')
             toast.success("Login successfull")
-            console.log(result)
         }).catch((error)=>{
             console.log(error)
             toast.error(error.message)

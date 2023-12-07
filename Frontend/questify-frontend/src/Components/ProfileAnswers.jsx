@@ -32,8 +32,7 @@ function ProfileAnswers() {
         uid: user?.uid,
       })
       .then((res) => {
-        console.log(res.data.reverse());
-        setAnswerlists(res.data);
+        setAnswerlists(res?.data?.reverse());
       })
       .catch((e) => {
         console.log(e);

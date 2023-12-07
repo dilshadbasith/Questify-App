@@ -11,7 +11,7 @@ function BrowseUser() {
   const { id } = useParams();
   const user = useSelector(selectUser);
   const [userlists, setUserlists] = useState([]);
-  // console.log(userlists);
+ 
   useEffect(() => {
     async function user() {
       const userlist = await axios.get(

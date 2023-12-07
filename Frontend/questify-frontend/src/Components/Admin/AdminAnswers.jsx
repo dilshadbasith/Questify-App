@@ -15,7 +15,6 @@ function LastSeen({ date }) {
 }
 function AdminAnswers() {
   const [answerlists, setAnswerlists] = useState([]);
-  console.log(answerlists);
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure to delete?")) {

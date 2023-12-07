@@ -53,7 +53,7 @@ function Navbar() {
         removeCookie("cookie")
         navigate('/')
         dispatch(logout())
-        console.log("Logged out")
+        
       }).catch(()=>{
         console.log("Error in logout")
 
@@ -98,13 +98,13 @@ function Navbar() {
           questionUrl: inputUrl,
           user:user,
         };
-        // console.log(user)
+        
 
         await axios
           .post("https://questify-ttdm.onrender.com/api/questions", body, config)
           .then((res) => {
-            console.log(res.data);
-            alert(res.data.message);
+            
+            alert(res?.data?.message);
             window.location.href = "/home";
           })
           .catch((e) => {
@@ -124,8 +124,8 @@ function Navbar() {
             }
           })
           .then((res) => {
-            console.log(res.data);
-            alert(res.data.message);
+           
+            alert(res?.data?.message);
             window.location.href = "/home";
           })
           .catch((e) => {

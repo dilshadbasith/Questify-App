@@ -13,7 +13,6 @@ const cookie = getCookie('token');
 
 export const setLike = createAsyncThunk('user/findService', async (question) => {
   // try {
-    console.log(question)
     const res = await axios.post("https://questify-ttdm.onrender.com/api/user/like",{
      id:question.question,
      user_id:question.user

@@ -13,8 +13,8 @@ function Feed() {
     axios
       .get("https://questify-ttdm.onrender.com/api/questions")
       .then((res) => {
-        console.log(res.data.reverse());
-        setPosts(res.data);
+        // console.log(res?.data?.reverse());
+        setPosts(res?.data?.reverse());
       })
       .catch((e) => {
         console.log(e);

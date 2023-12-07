@@ -23,8 +23,8 @@ function ProfilePosts() {
         uid: user?.uid,
       })
       .then((res) => {
-        console.log(res.data.reverse());
-        setPosts(res.data);
+        
+        setPosts(res?.data?.reverse());
       })
       .catch((e) => {
         console.log(e);
