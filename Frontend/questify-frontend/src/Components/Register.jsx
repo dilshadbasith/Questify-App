@@ -6,7 +6,7 @@ import {  useNavigate } from 'react-router-dom'
 function Register() {
     const navigate=useNavigate()
 
-    const Register= async (e)=>{
+    const Registers= async (e)=>{
         e.preventDefault()
         const name=e.target.name.value
         const email=e.target.email.value
@@ -23,7 +23,7 @@ function Register() {
 
   return (
     <div className='page '>
-        <form action="" onSubmit={Register}>
+        <form action="" onSubmit={Registers}>
     <div className='cover'>
        <div> <h1 className='loginh1'>Register</h1></div>
        <div> <input className='textbox' type="text" id='name' placeholder='Full name' required/><br /><br />
