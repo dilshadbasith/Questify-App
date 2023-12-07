@@ -9,7 +9,7 @@ function AdminQuestions() {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure to delete?")) {
       await axios.delete(
-        `http://localhost:3000/api/admin/deletequestion/${id}`
+        `https://questify-ttdm.onrender.com/api/admin/deletequestion/${id}`
       );
       location.reload();
     }
@@ -17,7 +17,7 @@ function AdminQuestions() {
   useEffect(() => {
     async function question() {
       const questionlist = await axios.get(
-        "http://localhost:3000/api/admin/getquestions"
+        "https://questify-ttdm.onrender.com/api/admin/getquestions"
       );
       setQuestionlists(questionlist.data);
     }

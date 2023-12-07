@@ -18,7 +18,7 @@ function UsersList() {
   useEffect(() => {
     async function user() {
       const userlist = await axios.get(
-        "http://localhost:3000/api/admin/getuser"
+        "https://questify-ttdm.onrender.com/api/admin/getuser"
       );
       setUserlists(userlist);
     }
