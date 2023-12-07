@@ -1,6 +1,6 @@
 import React from 'react'
 import './css/Login.css'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Logo from './assets/Questify.png'
 import Google from './assets/google.png'
@@ -59,7 +59,7 @@ function Login() {
        <div> <input className='textbox' type="text" id='username' placeholder='username' required/><br /><br /><br />
         <input className='textbox' type="text" id='password' placeholder='password' required/></div>
         <div><button className='login-btn'>Login</button></div>
-    <p>Don't have an account?<a href="" onClick={()=>navigate('/register')}>SignUp</a></p>
+    <p>Don't have an account?<Link to='/register'>SignUp</Link></p>
     <button className='google-btn' onClick={handleSubmit}><img className='google' src={Google} alt="google" />SignIn with Google</button>
     </div>
     </form>

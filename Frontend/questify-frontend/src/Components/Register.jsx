@@ -1,7 +1,7 @@
 import React from 'react'
 import './css/Login.css'
 import axios from 'axios'
-import {  useNavigate } from 'react-router-dom'
+import {  Link, useNavigate } from 'react-router-dom'
 
 function Register() {
     const navigate=useNavigate()
@@ -31,7 +31,7 @@ function Register() {
        <input className='textbox' type="text" id='username' placeholder='username' required /><br /><br />
         <input className='textbox' type="text" id='password' placeholder='password'required/></div>
         <div><button className='login-btn' type='submit'>SignUp</button></div>
-    <p>Already have an account?<a href="" onClick={()=>navigate('/')}>Login</a></p>
+    <p>Already have an account?<Link to='/'>Login</Link></p>
     </div>
     </form>
     </div>
